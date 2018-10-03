@@ -1,0 +1,20 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ListComponent } from './users/list/list.component';
+import { UserComponent } from './users/user/user.component';
+
+
+// rutas
+const routes: Routes = [
+  {path: 'home', component: ListComponent},
+  {path: 'usuario/:id', component: UserComponent},
+  {path: '**', redirectTo: 'home'}
+
+];
+@NgModule({
+  imports: [
+    RouterModule.forRoot( routes )
+  ],
+  exports: [ RouterModule ]
+})
+export class AppRountingModule { }
