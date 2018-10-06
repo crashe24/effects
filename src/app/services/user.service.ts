@@ -14,7 +14,17 @@ export class UserService {
   constructor(public  http: HttpClient) { }
 
   getUsers() {
-    return this.http.get(`${this.url}/users?per_page=6`)
+    return this.http.get(`${this.url}/users?per_page=6&delay=1`)
+    .pipe(
+      map( resp => {
+        console.log(resp);
+          return resp['data'];
+      })
+    );
+  }
+
+  getUserById(id: string) {
+    return this.http.get(`${this.url}/users/${id}`)
     .pipe(
       map( resp => {
         console.log(resp);
